@@ -1,1 +1,131 @@
-
+Phase I (Sim01) – Input Data Management
+DESCRIPTION
+This phase – which is a review of data structures, implemented in C – will require the creation of two data-acquisition operations that upload and store two sets of data: the Simulator configuration file, and the Simulator meta-data file. It will also provide a display representing the running simulator.
+While this is a stand-alone project, students are wise to assess the next three phases of the project so they can consider the requirements and develop their code to be modular components of the larger system. The last project or two will be pretty complicated but will not be difficult to develop as long as the base components have been developed well.
+IMPORTANT: As mentioned previously, no processing function should ever display an output. The configuration and meta-data input operations are a good example.  If there is a failure in the operation/function, it should provide some form of messaging back to the calling function so the calling function can manage the issue, which may include displaying an error message and/or shutting down the program. Any processing functions (i.e., functions not specifically focused on I/O actions other than its specifications) that conduct any I/O will experience a significant reduction of credit. As a note, the simulator function’s task is to display simulated operations, so it is acceptable for that function, along with its subordinate functions, to display or store output.
+MAIN FILE/MAIN METHOD/DRIVER
+One file will contain the main file for the simulator program. As mentioned previously in this document, no other functions or operations should be in the main file except the main function itself, and most of this function’s actions will be to call other functions to conduct the necessary operations. The main function should be developed to upload the configuration and meta-data files, and to conduct the simulation process before any other code is written; this is demonstrated in the tutorial related to this course. If implemented correctly, this function will not change throughout this project.
+CONFIGURATION FILE
+The configuration file must be uploaded to the system as called by the main function. Any issues with incorrect commands, in/out arguments, and string or other arguments including specified limits for the configuration items must stop  the program and report the issue as specifically as possible.
+META-DATA FILE
+The meta-data file must also be uploaded to the system as called by the main function and again, any incorrect or misspelled commands or string arguments, or out of limit numerical arguments must stop the program, and report the issue as specifically as possible.
+As specified above, students will be provided a meta-data file generation program.  The meta-data acquisition component must upload any meta-data file of any size, any number of actions, any number of programs, etc., and all student programs must work correctly on any correctly formed meta-data file.
+ASSIGNMENT
+As specified in the description, students are to develop modules that, when called, input and store the Simulator configuration data and the Simulator meta-data. The Sim01 program will also provide a call to the function that runs the simulator. For purposes of this first assignment, the function will simply output “runSim called here” to the monitor to demonstrate that the main driver program is fully operational. Once this part of the assignment is completed, there should be no reason to go back and modify the main program.
+Once the modules are developed, they must be executed in a driver program and tested with varying data to prove they are working correctly.
+IMPORTANT: It will not be enough to hack together a program that seems to work.  All programs must be eminently readable since each program will be graded by one of your peers in the class in a double-blind anonymous system. Even if your program works – or seems to work – correctly, it will not receive full credit if it is difficult to read and/or understand. Refer to the programming standards provided in each project rubric as well as the example program code provided. While these standards are not an absolute requirement, the intent (readability) of the standards is a requirement. Also review each assignment rubric early in your
+development process so you will know how your program will be graded. To repeat: All code must be eminently readable. Use of single-letter variables, lack of white space, lack of curly braces used for every selection or iteration statement, etc. will be cause for loss of credit.
+IMPORTANT (again): As mentioned previously in this document, the programming quality of a computer science core course is expected here. While this Simulator project is much easier than working with a real operating system, the programming is still nontrivial. It is strongly recommended that students start on each of the Simulator assignments as soon as they are posted; late starts and last-minute programming attempts will not be successful. 
+SIM01 PROCESS/DISPLAY
+The following command-line call using the switch -dc (display config) is provided here:
+>OS_SimDriver_6 -dc config0.cnf
+Simulator Program
+=================
+Config File Display
+-------------------
+Version : 1.05
+Program file name : testfile.mdf
+CPU schedule selection : SRTF-P
+Quantum time : 3
+Memory Available : 11100
+Process cycle rate : 10
+I/O cycle rate : 20
+Log to selection : Both
+Log file name : logfile_1.lgf
+Simulator Program End.
+The following command-line call using the switch -dm (display meta-data) is  provided here:
+>OS_SimDriver_6 -dm config0.cnf
+Simulator Program
+=================
+Meta-Data File Display
+----------------------
+Op Code: /pid: 0/cmd: sys/io: NA
+ /arg1: start/arg 2: 0/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: app/io: NA
+ /arg1: start/arg 2: 0/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: in
+ /arg1: hard drive/arg 2: 18/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: cpu/io: NA
+ /arg1: process/arg 2: 9/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: cpu/io: NA
+ /arg1: process/arg 2: 9/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: cpu/io: NA
+ /arg1: process/arg 2: 9/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: out
+ /arg1: monitor/arg 2: 60/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: app/io: NA
+ /arg1: end/arg 2: 0/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: app/io: NA
+ /arg1: start/arg 2: 0/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: in
+ /arg1: sound signal/arg 2: 40/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: mem/io: NA
+ /arg1: allocate/arg 2: 2048/arg 3: 4096/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: in
+ /arg1: hard drive/arg 2: 30/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: mem/io: NA
+ /arg1: allocate/arg 2: 2760/arg 3: 2890/op end time: 0.000000 Op Code: /pid: 0/cmd: dev/io: in
+ /arg1: sound signal/arg 2: 25/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: cpu/io: NA
+ /arg1: process/arg 2: 6/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: mem/io: NA
+ /arg1: allocate/arg 2: 3000/arg 3: 4000/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: out
+ /arg1: usb/arg 2: 10/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: mem/io: NA
+ /arg1: allocate/arg 2: 3500/arg 3: 3700/op end time: 0.000000
+Op Code: /pid: 0/cmd: app/io: NA
+ /arg1: end/arg 2: 0/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: app/io: NA
+ /arg1: start/arg 2: 0/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: in
+ /arg1: video signal/arg 2: 70/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: cpu/io: NA
+ /arg1: process/arg 2: 10/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: out
+ /arg1: monitor/arg 2: 70/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: in
+ /arg1: hard drive/arg 2: 18/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: cpu/io: NA
+ /arg1: process/arg 2: 9/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: app/io: NA
+ /arg1: end/arg 2: 0/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: app/io: NA
+ /arg1: start/arg 2: 0/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: in
+ /arg1: sound signal/arg 2: 35/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: out
+ /arg1: monitor/arg 2: 100/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: in
+ /arg1: keyboard/arg 2: 50/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: cpu/io: NA
+ /arg1: process/arg 2: 9/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: out
+ /arg1: video signal/arg 2: 49/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: app/io: NA
+ /arg1: end/arg 2: 0/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: app/io: NA
+ /arg1: start/arg 2: 0/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: in
+ /arg1: keyboard/arg 2: 90/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: out
+ /arg1: sound signal/arg 2: 40/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: out
+ /arg1: serial/arg 2: 32/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: cpu/io: NA
+ /arg1: process/arg 2: 10/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: dev/io: in
+ /arg1: hard drive/arg 2: 15/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: app/io: NA
+ /arg1: end/arg 2: 0/arg 3: 0/op end time: 0.000000
+Op Code: /pid: 0/cmd: sys/io: NA
+ /arg1: end/arg 2: 0/arg 3: 0/op end time: 0.000000
+Simulator Program End.
+The following command-line call using the switch -rs (run simulator) is provided here:
+>OS_SimDriver_6 -rs config0.cnf
+Simulator Program
+=================
+runSim called here
+Simulator Program End.
+ 
+Finally, note that the three command-line switches may be called in any combination. For example, it might be called with both the -dc and -dm switches so that it displays both the configuration file and the meta-data file. It could also be called with all three switches (-dc, -dm, and -rs) and all three responses  should be correctly displayed.
