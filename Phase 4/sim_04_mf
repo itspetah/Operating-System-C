@@ -1,0 +1,28 @@
+CC = gcc
+DEBUG = -g
+CFLAGS = -Wall -std=c99 -pedantic -c $(DEBUG)
+LFLAGS = -Wall -std=c99 -pedantic -pthread $(DEBUG) -lpthread
+
+sim_04 : StringUtils.o metadataops.o configops.o simtimer.o simulator.o OS_SimDriver.o
+	$(CC) $(LFLAGS) StringUtils.o metadataops.o configops.o simtimer.o simulator.o OS_SimDriver.o -o sim_04
+
+OS_SimDriver.o : OS_SimDriver.c
+	$(CC) $(CFLAGS) OS_SimDriver.c
+
+configops.o : configops.c configops.h
+	$(CC) $(CFLAGS) configops.c
+
+StringUtils.o : StringUtils.c StringUtils.h
+	$(CC) $(CFLAGS) StringUtils.c
+
+metadataops.o : metadataops.c metadataops.h
+	$(CC) $(CFLAGS) metadataops.c
+
+simtimer.o : simtimer.c simtimer.h
+	$(CC) $(CFLAGS) simtimer.c
+
+simulator.o : simulator.c simulator.h
+	$(CC) $(CFLAGS) simulator.c
+
+clean:
+	\rm *.o sim_04
